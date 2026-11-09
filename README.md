@@ -8,7 +8,6 @@
 Between 2005 and 2023, did the European Union countries that increased waste-to-energy (WTE) incineration reduce how much they landfill, or did WTE grow at the expense of recycling? Using Eurostat's municipal solid waste data (`env_wasmun`) for the 27 EU member states, collected through Eurostat's public API, this project compares how each country's waste was split between landfilling, energy recovery and recycling over time. The goal is to see whether more WTE goes along with less landfilling while recycling holds steady. The results are aimed at state officials and U.S. waste companies weighing whether to move from landfilling toward WTE.
 
 ## Data
-## Data
 
 ### Source
 - **Publisher:** Eurostat, the statistical office of the European Union
