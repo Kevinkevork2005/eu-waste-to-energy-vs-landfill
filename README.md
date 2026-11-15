@@ -68,16 +68,34 @@ Denmark (7).
 *Municipal waste by waste management operations* (`env_wasmun`), retrieved through the [Eurostat dissemination API](https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/env_wasmun). Raw and cleaned files will be stored in [`data/`](data/).
 
 ## Methods
+The analysis is in analysis.ipynb.
 
-_To be completed._ See [`analysis.ipynb`](analysis.ipynb).
+Data quality flags: Eurostat's status flags (estimated, provisional, imputed, break in series) were read from the raw JSON and attached to each value (data/processed/eurostat_waste_2005_2023_flagged.csv).
+Shares: Landfill, energy recovery (WTE), incineration without energy recovery and recycling were each divided by waste generated, giving a percentage share for every country and year. The four categories account for a median of 99% of waste generated.
+Total incineration: Because some countries (notably Germany and the Netherlands) reclassified existing incinerators from D10 to R1 during the period, WTE alone overstates new capacity. I therefore also use total incineration (D10 + R1).
+Change per country: For each country I compared its first and last year with complete data (2005 and 2023 for 24 countries; Croatia starts 2007, the Netherlands 2008, Latvia ends 2022) and calculated the change in percentage points (data/processed/country_changes.csv).
+Comparisons: Pearson correlations between the changes (with Spearman rank correlations as a check), and a comparison of countries that started with high incineration (30%+ in 2005) against the rest.
+Preliminary findings
 
-## Findings
+Scatter plots of change in incineration vs. change in landfill and recycling
 
-_To be completed._ See [`report.md`](report.md).
+Figure 1. Across the EU-27 from 2005 to 2023, countries that burned more of their waste cut landfilling the most (r = −0.74), but incineration growth had no clear relationship with recycling change (r = 0.09).
+
+Landfill rates fell sharply across the EU. The median country's landfill share fell from 62.8% of waste generated in 2005 to 18.6% in 2023, and from 277.5 to 98 kg per person (about −65%). By 2023, 11 of 26 countries with data were at or below the EU's 2035 target of 10% (AT, BE, DE, DK, EE, FI, LT, LU, NL, SE, SI), while Greece (80.5%), Romania (75.7%), Malta (73.6%), Cyprus (61.4%) and Portugal (56.6%) still landfilled the most.
+Incineration replaced landfilling. Countries that expanded incineration cut landfilling the most. Finland, Estonia, Ireland and Lithuania each added 40+ points of incineration and cut landfilling by 46–83 points.
+No sign that WTE crowded out recycling overall. Recycling rose in 25 of 27 countries, and its change was unrelated to incineration growth.
+Possible plateau among heavy incinerators. Countries already burning 30%+ of their waste in 2005 raised recycling by +6 points versus +22 for the rest, and Sweden's recycling fell. Since these countries also started with three times the recycling, this may reflect a ceiling rather than lock-in.
+Limitations: 27 countries is a small sample; correlation does not show cause; 19 countries have at least one break in series; and in a few country-years the shares fall well below or above 100% (59.7%–116.3%).
+
+## Full write-up to come in report.md.
 
 ## How to reproduce
 
-_To be completed._
+To be completed.
+
+## Proposal
+
+The project proposal is in proposal.md.
 
 ## Proposal
 
